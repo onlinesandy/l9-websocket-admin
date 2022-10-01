@@ -54,7 +54,7 @@
                         <td>{{ ++$srno }}</td>
                         <td>{{ $role->name }}</td>
                         <td>{{ $role->name }}</td>
-                        <td><i class="demo-pli-clock"></i> {{ $role->name }}</td>
+                        <td><i class="demo-pli-clock"></i> {{ $role->created_at->format('d-m-Y') }}</td>
                         <td>
                             <a class="btn btn-info" href="{{ route('roles.show', $role->id) }}">Show</a>
                             @can('role-edit')
