@@ -12,8 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Auth;
+
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 
 Route::get('/', function () {
@@ -26,11 +30,19 @@ Route::get('/ws', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard' ,['title'=>'Dashboard']);
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/lockscreen', [AuthenticatedSessionController::class, 'locked'])->middleware('auth.lock')->name('login.locked');
 Route::post('/lockscreen', [AuthenticatedSessionController::class, 'unlocked'])->name('login.unlock');
 
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::get('file-export', [RoleController::class, 'fileExport'])->name('file-export');
+
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+});
 
 require __DIR__.'/auth.php';

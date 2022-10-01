@@ -83,10 +83,34 @@
 
                         <!--Menu list item-->
                         <li class="active-link">
-                            <a href="index.html">
+                            <a href="{{ route('dashboard') }}">
                                 <i class="demo-psi-home"></i>
                                 <span class="menu-title">
                                     <strong>Dashboard</strong>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ url('roles') }}">
+                                <i class="demo-psi-home"></i>
+                                <span class="menu-title">
+                                    <strong>Roles</strong>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ url('users') }}">
+                                <i class="demo-psi-home"></i>
+                                <span class="menu-title">
+                                    <strong>Users</strong>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ url('products') }}">
+                                <i class="demo-psi-home"></i>
+                                <span class="menu-title">
+                                    <strong>Products</strong>
                                 </span>
                             </a>
                         </li>

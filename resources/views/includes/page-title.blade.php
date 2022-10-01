@@ -1,12 +1,18 @@
 @if (session('login-success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('login-success') }}
-        </div>
-    @endif
+    <div class="alert alert-success" role="alert">
+        {{ session('login-success') }}
+    </div>
+@endif
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
 
 
 <div id="page-title">
-    <h1 class="page-header text-overflow">Dashboard</h1>
+    <h1 class="page-header text-overflow">{{ $title }}</h1>
 
     <!--Searchbox-->
     <div class="searchbox">
@@ -18,3 +24,5 @@
         </div>
     </div>
 </div>
+{{ Breadcrumbs::render() }}
+

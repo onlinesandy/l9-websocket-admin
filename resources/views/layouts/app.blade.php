@@ -18,7 +18,6 @@
         @include('includes.header')
         <div class="boxed">
             <div id="content-container">
-                @include('includes.page-title')
                 <div id="page-content">
                     {{ $slot }}
                 </div>

@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    @include('includes.page-title')
 
     <div class="row">
         <livewire:offline></livewire:offline>
