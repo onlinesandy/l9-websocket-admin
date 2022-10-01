@@ -145,8 +145,12 @@ class RoleController extends Controller
                         ->with('success','Role deleted successfully');
     }
 
-    public function fileExport()
+    public function fileExportExcel()
     {
         return Excel::download(new RoleExport, 'Roles.xlsx');
+    }
+    public function fileExportCsv()
+    {
+        return Excel::download(new RoleExport, 'Roles.csv');
     }
 }

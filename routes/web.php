@@ -39,7 +39,8 @@ Route::post('/lockscreen', [AuthenticatedSessionController::class, 'unlocked'])-
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
-    Route::get('file-export', [RoleController::class, 'fileExport'])->name('file-export');
+    Route::get('file-export-excel', [RoleController::class, 'fileExportExcel'])->name('file-export-excel');
+    Route::get('file-export-csv', [RoleController::class, 'fileExportCsv'])->name('file-export-csv');
 
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);

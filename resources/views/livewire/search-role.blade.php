@@ -19,18 +19,16 @@
                         class="form-control" autocomplete="off">
                 </div>
                 <div class="btn-group">
-                    <a class="btn btn-default" href="{{ route('file-export') }}"><i class="demo-pli-download-from-cloud"></i></a>
+                    <a class="btn btn-default" href="{{ route('file-export-excel') }}"><i class="fa fa-file-excel-o"></i></a>
                     <div class="btn-group">
                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" aria-expanded="false">
-                            <i class="demo-pli-gear"></i>
+                            <i class="demo-pli-download-from-cloud"></i>
                             <span class="caret"></span>
                         </button>
                         <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="{{ route('file-export-excel') }}">Download as Excel</a></li>
+                            <li><a href="{{ route('file-export-csv') }}">Download as CSv</a></li>
+
                         </ul>
                     </div>
                 </div>
