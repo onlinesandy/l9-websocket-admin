@@ -42,13 +42,13 @@
     <script src="{{ Vite::asset('resources/plugins/morris-js/raphael-js/raphael.min.js') }}"></script>
     <script src="{{ Vite::asset('resources/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/demo/dashboard.js') }}"></script>
+    <script src="{{ Vite::asset('resources/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js') }} "></script>
+
+
+    <script src="{{ Vite::asset('resources/plugins/bootstrap-validator/bootstrapValidator.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/demo/form-wizard.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/custom.js') }}"></script>
-<script>
-     window.Lockscreen = {
-        locked: {{ session()->get('lockscreen', false) }},
-        route: '{{ url('/lockscreen') }}',
-      };
-</script>
+
 </body>
 
 </html>

@@ -52,3 +52,17 @@ Breadcrumbs::for('file-export-csv', function (BreadcrumbTrail $trail) {
     $trail->parent('roles.index');
     $trail->push('Role CSV Download', url('roles'));
 });
+
+
+
+// Home > Role
+Breadcrumbs::for('profile.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Profile', url('profile'));
+});
+
+// Home > Role
+Breadcrumbs::for('chat.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Chat', url('chat'));
+});

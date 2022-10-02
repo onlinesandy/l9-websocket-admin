@@ -7,7 +7,7 @@
             <a href="index.html" class="navbar-brand">
                 <img src="{{ Vite::asset('resources/img/logo.png') }}" alt="Nifty Logo" class="brand-icon">
                 <div class="brand-title">
-                    <span class="brand-text">Nifty</span>
+                    <span class="brand-text">Admin</span>
                 </div>
             </a>
         </div>
@@ -32,8 +32,9 @@
 
 
 
-                <!--Notification dropdown-->
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+            </ul>
+            <ul class="nav navbar-top-links pull-right">
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         <i class="demo-pli-bell"></i>
@@ -133,31 +134,8 @@
                                         </a>
                                     </li>
 
-                                    <!-- Dropdown list-->
-                                    <li class="bg-gray">
-                                        <a class="media" href="#">
-                                            <div class="media-left">
-                                                <img class="img-circle img-sm" alt="Profile Picture" src="img/profile-photos/9.png">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="text-nowrap">Lucy sent you a message</div>
-                                                <small class="text-muted">30 minutes ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
 
-                                    <!-- Dropdown list-->
-                                    <li class="bg-gray">
-                                        <a class="media" href="#">
-                                            <div class="media-left">
-                                                <img class="img-circle img-sm" alt="Profile Picture" src="img/profile-photos/3.png">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="text-nowrap">Jackson sent you a message</div>
-                                                <small class="text-muted">40 minutes ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -170,182 +148,6 @@
                         </div>
                     </div>
                 </li>
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <!--End notifications dropdown-->
-
-
-
-                <!--Mega dropdown-->
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <li class="mega-dropdown">
-                    <a href="#" class="mega-dropdown-toggle">
-                        <i class="demo-pli-layout-grid"></i>
-                    </a>
-                    <div class="dropdown-menu mega-dropdown-menu">
-                        <div class="row">
-                            <div class="col-sm-4 col-md-3">
-
-                                <!--Mega menu list-->
-                                <ul class="list-unstyled">
-                                    <li class="dropdown-header"><i class="demo-pli-file icon-fw"></i> Pages</li>
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">Search Result</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="{{ Redirect::to('/lockscreen') }}">Sreen Lock</a></li>
-                                    <li><a href="#" class="disabled">Disabled</a></li>                                        </ul>
-
-                            </div>
-                            <div class="col-sm-4 col-md-3">
-
-                                <!--Mega menu list-->
-                                <ul class="list-unstyled">
-                                    <li class="dropdown-header"><i class="demo-pli-mail icon-fw"></i> Mailbox</li>
-                                    <li><a href="#"><span class="pull-right label label-danger">Hot</span>Indox</a></li>
-                                    <li><a href="#">Read Message</a></li>
-                                    <li><a href="#">Compose</a></li>
-                                </ul>
-                                <p class="pad-top mar-top bord-top text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-                            </div>
-                            <div class="col-sm-4 col-md-3">
-                                <!--Mega menu list-->
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="#" class="media mar-btm">
-                                            <span class="badge badge-success pull-right">90%</span>
-                                            <div class="media-left">
-                                                <i class="demo-pli-data-settings icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <p class="text-semibold text-dark mar-no">Data Backup</p>
-                                                <small class="text-muted">This is the item description</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="media mar-btm">
-                                            <div class="media-left">
-                                                <i class="demo-pli-support icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <p class="text-semibold text-dark mar-no">Support</p>
-                                                <small class="text-muted">This is the item description</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="media mar-btm">
-                                            <div class="media-left">
-                                                <i class="demo-pli-computer-secure icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <p class="text-semibold text-dark mar-no">Security</p>
-                                                <small class="text-muted">This is the item description</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="media mar-btm">
-                                            <div class="media-left">
-                                                <i class="demo-pli-map-2 icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <p class="text-semibold text-dark mar-no">Location</p>
-                                                <small class="text-muted">This is the item description</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-12 col-md-3">
-                                <p class="dropdown-header"><i class="demo-pli-file-jpg icon-fw"></i> Gallery</p>
-                                <ul class="list-unstyled list-inline text-justify">
-
-                                    <li class="pad-btm">
-                                        <img src="img/thumbs/mega-menu-2.jpg" alt="thumbs">
-                                    </li>
-                                    <li class="pad-btm">
-                                        <img src="img/thumbs/mega-menu-3.jpg" alt="thumbs">
-                                    </li>
-                                    <li class="pad-btm">
-                                        <img src="img/thumbs/mega-menu-1.jpg" alt="thumbs">
-                                    </li>
-                                    <li class="pad-btm">
-                                        <img src="img/thumbs/mega-menu-4.jpg" alt="thumbs">
-                                    </li>
-                                    <li class="pad-btm">
-                                        <img src="img/thumbs/mega-menu-5.jpg" alt="thumbs">
-                                    </li>
-                                    <li class="pad-btm">
-                                        <img src="img/thumbs/mega-menu-6.jpg" alt="thumbs">
-                                    </li>
-                                </ul>
-                                <a href="#" class="btn btn-sm btn-block btn-default">Browse Gallery</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <!--End mega dropdown-->
-
-            </ul>
-            <ul class="nav navbar-top-links pull-right">
-
-                <!--Language selector-->
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <li class="dropdown">
-                    <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
-                        <span class="lang-selected">
-                            <img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
-                        </span>
-                    </a>
-
-                    <!--Language selector menu-->
-                    <ul class="head-list dropdown-menu">
-                        <li>
-                            <!--English-->
-                            <a href="#" class="active">
-                                <img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
-                                <span class="lang-id">EN</span>
-                                <span class="lang-name">English</span>
-                            </a>
-                        </li>
-                        <li>
-                            <!--France-->
-                            <a href="#">
-                                <img class="lang-flag" src="img/flags/france.png" alt="France">
-                                <span class="lang-id">FR</span>
-                                <span class="lang-name">Français</span>
-                            </a>
-                        </li>
-                        <li>
-                            <!--Germany-->
-                            <a href="#">
-                                <img class="lang-flag" src="img/flags/germany.png" alt="Germany">
-                                <span class="lang-id">DE</span>
-                                <span class="lang-name">Deutsch</span>
-                            </a>
-                        </li>
-                        <li>
-                            <!--Italy-->
-                            <a href="#">
-                                <img class="lang-flag" src="img/flags/italy.png" alt="Italy">
-                                <span class="lang-id">IT</span>
-                                <span class="lang-name">Italiano</span>
-                            </a>
-                        </li>
-                        <li>
-                            <!--Spain-->
-                            <a href="#">
-                                <img class="lang-flag" src="img/flags/spain.png" alt="Spain">
-                                <span class="lang-id">ES</span>
-                                <span class="lang-name">Español</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <!--End language selector-->
-
 
 
                 <!--User dropdown-->
@@ -376,12 +178,12 @@
                         <!-- User dropdown menu -->
                         <ul class="head-list">
                             <li>
-                                <a href="#">
+                                <a href="{{ url('/profile') }}">
                                     <i class="demo-pli-male icon-lg icon-fw"></i> Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ url('/chat') }}">
                                     <span class="badge badge-danger pull-right">9</span>
                                     <i class="demo-pli-mail icon-lg icon-fw"></i> Messages
                                 </a>
@@ -392,11 +194,7 @@
                                     <i class="demo-pli-gear icon-lg icon-fw"></i> Settings
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="demo-pli-information icon-lg icon-fw"></i> Help
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="{{ url('/lockscreen') }}">
                                     <i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen

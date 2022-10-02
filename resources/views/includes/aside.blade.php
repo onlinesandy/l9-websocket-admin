@@ -30,8 +30,10 @@
                 <!-- Tabs Content -->
                 <!--================================-->
                 <div class="tab-content">
-                    <livewire:onlineusers>
-                        </livewire:onlinusers>
+                    <div class="tab-pane fade in active" id="demo-asd-tab-1">
+                    <livewire:onlineusers/>
+                    </div>
+
                         <div class="tab-pane fade" id="demo-asd-tab-2">
 
                             <!--Simple Menu-->

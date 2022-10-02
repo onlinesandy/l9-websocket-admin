@@ -51,12 +51,12 @@
                     <div id="mainnav-shortcut">
                         <ul class="list-unstyled">
                             <li class="col-xs-3" data-content="My Profile" data-original-title="" title="">
-                                <a class="shortcut-grid" href="#">
+                                <a class="shortcut-grid" href="{{ route('profile.index') }}">
                                     <i class="demo-psi-male"></i>
                                 </a>
                             </li>
                             <li class="col-xs-3" data-content="Messages" data-original-title="" title="">
-                                <a class="shortcut-grid" href="#">
+                                <a class="shortcut-grid" href="{{ route('chat.index') }}">
                                     <i class="demo-psi-speech-bubble-3"></i>
                                 </a>
                             </li>
@@ -66,7 +66,7 @@
                                 </a>
                             </li>
                             <li class="col-xs-3" data-content="Lock Screen" data-original-title="" title="">
-                                <a class="shortcut-grid" href="#">
+                                <a class="shortcut-grid" href="{{ route('login.locked') }}">
                                     <i class="demo-psi-lock-2"></i>
                                 </a>
                             </li>

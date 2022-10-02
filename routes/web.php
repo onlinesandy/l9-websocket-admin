@@ -18,6 +18,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LockScreenController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatController;
+
 
 
 Route::get('/', function () {
@@ -45,5 +48,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
 });
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('profile', ProfileController::class);
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('chat', ChatController::class);
+});
+
 
 require __DIR__.'/auth.php';
