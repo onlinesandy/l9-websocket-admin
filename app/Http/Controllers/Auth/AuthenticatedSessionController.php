@@ -15,14 +15,6 @@ use Hash;
 class AuthenticatedSessionController extends Controller
 {
 
-
-    public function __construct()
-{
-    $this->middleware('web')->except([
-        'locked',
-        'unlock'
-    ]);
-}
     /**
      * Display the login view.
      *
@@ -65,37 +57,6 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
-
-    public function locked()
-{
-    if(!session('lock-expires-at')){
-        return redirect('/');
-    }
-
-    if(session('lock-expires-at') > now()){
-        return redirect('/');
-    }
-
-    return view('auth.lock');
-}
-
-public function unlock(Request $request)
-{
-    $request->validate([
-        'password' => 'required|string',
-    ]);
-    $check = Hash::check($request->input('password'), $request->user()->password);
-
-    if(!$check){
-        return redirect()->route('login.locked')->withErrors([
-            'Your password does not match your profile.'
-        ]);
-    }
-
-    session(['lock-expires-at' => now()->addMinutes($request->user()->getLockoutTime())]);
-
-    return redirect('/');
-}
 
 
 }

@@ -6,14 +6,19 @@
                 <span class="text-muted">are you here?</span>
             </div>
             <div class="pad-btm mar-btm">
-                <img alt="Profile Picture" class="img-lg img-circle img-border-light" src="{{ Vite::asset('resources/img/profile-photos/1.png') }}">
+                <img alt="Profile Picture" class="img-lg img-circle img-border-light"
+                    src="{{ Vite::asset('resources/img/profile-photos/1.png') }}">
             </div>
             <p>Please enter your password to unlock the screen!</p>
-            <form action="{{ route('login.unlock') }}" method="post">
+            <form action="{{ route('login.unlock') }}" method="post" class="@error('password') has-error @enderror">
                 @csrf
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                    <input type="password" class="form-control" placeholder="Password" name="password" value="">
                 </div>
+                @error('password')
+                    <small style="text-align:left;" class="help-block" data-bv-validator="notEmpty" data-bv-for="Password"
+                        data-bv-result="INVALID" style="">{{ $message }}</small>
+                @enderror
                 <div class="form-group text-right">
                     <x-primary-button class="btn btn-block btn-success">
                         {{ __('Unlock') }}

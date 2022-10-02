@@ -36,6 +36,7 @@
         </div>
     </div>
     <div class="table-responsive">
+        <div wire:loading.delay.longest wire:target="search">Processing...</div>
         <table class="table table-striped">
             <thead>
                 <tr>

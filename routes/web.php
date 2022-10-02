@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\LockScreenController;
 
 
 Route::get('/', function () {
@@ -33,8 +33,8 @@ Route::get('/dashboard', function () {
     return view('dashboard' ,['title'=>'Dashboard']);
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/lockscreen', [AuthenticatedSessionController::class, 'locked'])->middleware('auth.lock')->name('login.locked');
-Route::post('/lockscreen', [AuthenticatedSessionController::class, 'unlocked'])->name('login.unlock');
+Route::get('/lockscreen', [LockScreenController::class, 'lockscreen'])->name('login.locked');
+Route::post('/lockscreen', [LockScreenController::class, 'unlockscreen'])->name('login.unlock');
 
 
 Route::group(['middleware' => ['auth']], function() {

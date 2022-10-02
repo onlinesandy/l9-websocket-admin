@@ -3,7 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
+use Auth;
+use Session;
 
 class AuthLock
 {
@@ -11,17 +12,20 @@ class AuthLock
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @param  \Closure  $next
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
 
-        if(!$request()->user()){
+
+
+        if(!$request->user()){
             return $next($request);
          }
          // If the user does not have this feature enabled, then just return next.
          if (!$request->user()->hasLockoutTime()) {
+
              // Check if previous session was set, if so, remove it because we don't need it here.
              if (session('lock-expires-at')) {
                  session()->forget('lock-expires-at');
@@ -32,7 +36,10 @@ class AuthLock
 
          if ($lockExpiresAt = session('lock-expires-at')) {
              if ($lockExpiresAt < now()) {
-                 return redirect()->route('login.locked');
+                if (\Route::currentRouteName() === 'login.locked' || \Route::currentRouteName() === 'login.unlock') {
+                    return $next($request);
+                }
+                return redirect()->route('login.locked');
              }
          }
 
