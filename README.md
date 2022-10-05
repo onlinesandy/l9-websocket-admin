@@ -30,10 +30,15 @@ Generate a new application key
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
+    
+install the node modules packages 
+
+    npm install    
 
 Start the local development server
 
     php artisan serve
+    npm run dev
 
 You can now access the server at http://localhost:8000
 
@@ -44,6 +49,7 @@ You can now access the server at http://localhost:8000
     composer install
     cp .env.example .env
     php artisan key:generate 
+    npm install
     
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 
