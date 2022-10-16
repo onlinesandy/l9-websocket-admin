@@ -1,5 +1,5 @@
 # Getting started
-This is laravel admin dashboard app, using screenlock, role and permission, websockets,livewire, laravel breadcrumbs
+This is laravel admin dashboard app, using screenlock, role and permission, websockets,livewire, laravel breadcrumbs, Offline Component
 
 ## Installation
 
@@ -104,6 +104,7 @@ The api can be accessed at [http://localhost:8000/api](http://localhost:8000/api
 - [laravel-excel](https://docs.laravel-excel.com/3.1/exports/export-formats.html) - For Excel/CSV Import/Export 
 - [laravel-role-permission](https://spatie.be/docs/laravel-permission/v5/installation-laravel) - For Role and Permission
 - [laravel-breadcrumbs](https://github.com/diglactic/laravel-breadcrumbs) - For Breadcrumbs
+- [Laravel-Acquaintances](https://github.com/multicaret/laravel-acquaintances) - Friendship
 
 
 ## Environment variables

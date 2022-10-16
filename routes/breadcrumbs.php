@@ -55,14 +55,56 @@ Breadcrumbs::for('file-export-csv', function (BreadcrumbTrail $trail) {
 
 
 
-// Home > Role
+// Home > Profile
 Breadcrumbs::for('profile.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Profile', url('profile'));
 });
 
-// Home > Role
+// Home > Chat
 Breadcrumbs::for('chat.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Chat', url('chat'));
+});
+
+
+// Home > Friend
+Breadcrumbs::for('friends.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Friend', url('friends'));
+});
+
+// Home > Command
+Breadcrumbs::for('commands.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Command', url('commands'));
+});
+
+
+
+
+// Home > Role
+Breadcrumbs::for('permissions.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Permission', url('permissions'));
+});
+
+// Home > Role > Edit
+Breadcrumbs::for('permissions.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('permissions.index');
+    $trail->push('Edit', url('permissions'));
+});
+
+
+// Home > Role > Create
+Breadcrumbs::for('permissions.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('permissions.index');
+    $trail->push('Create', url('permissions'));
+});
+
+
+// Home > Role > Show
+Breadcrumbs::for('permissions.show', function (BreadcrumbTrail $trail) {
+    $trail->parent('permissions.index');
+    $trail->push('Show', url('permissions'));
 });

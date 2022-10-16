@@ -216,11 +216,6 @@ $(window).on('load', function() {
 
 
 
-
-
-
-
-
     // WELCOME NOTIFICATIONS
     // =================================================================
     // Require Admin Core Javascript

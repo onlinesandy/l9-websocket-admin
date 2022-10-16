@@ -9,10 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Multicaret\Acquaintances\Traits\Friendable;
+
 
 class User extends Authenticatable
 {
-    use LockableTrait, HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use LockableTrait, HasApiTokens, HasFactory, Notifiable,HasRoles,Friendable;
 
 
     /**
@@ -45,4 +47,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function receivesBroadcastNotificationsOn()
+{
+     return [
+        'App.User.'.$this->id,
+        'chat-'.$this->id
+    ];
+}
+
 }

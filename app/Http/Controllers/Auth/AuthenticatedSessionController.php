@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Events\Onlineusers;
 
 use Hash;
 
@@ -36,7 +35,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-       // event(new Onlineusers(Auth::user()));
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

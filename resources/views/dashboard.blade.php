@@ -2,7 +2,6 @@
     @include('includes.page-title')
 
     <div class="row">
-        <livewire:offline></livewire:offline>
         <div class="col-lg-7">
 
             <!--Network Line Chart-->

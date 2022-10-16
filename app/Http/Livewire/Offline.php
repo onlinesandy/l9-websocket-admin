@@ -9,9 +9,10 @@ class Offline extends Component
     public function render()
     {
         return <<<'blade'
-            <div wire:offline class="fixed top-4 left-1/2">
-                <div class="relative -left-1/2 text-red-600 bg-yellow-500 px-4 py-2 font-bold">
-                    You are currently offline!
+            <div wire:offline id="offlinediv" class="col-md-12">
+                <div class="alert alert-danger">
+                    <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
+                    <strong>Ooopssss !!! </strong> You are offline.
                 </div>
             </div>
         blade;

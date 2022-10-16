@@ -1,41 +1,49 @@
 <div>
-@if (count($here) > 0)
+    @if (count($here) > 0)
 
-<p class="pad-hor mar-top text-semibold text-main">
+        <p class="pad-hor mar-top text-semibold text-main">
 
-    Users
-    <span class="pull-right label label-warning ">{{ count($here) }}</span>
-    <a href="#" ><span class="label label-success pull-right mar-rgt">Create Group</span></a>
+            Online Users
+            <span class="pull-right label label-warning ">{{ count($here) }}</span>
+            <a href="#"><span class="label label-success pull-right mar-rgt">Create Group</span></a>
 
-</p>
+        </p>
 
-<div class="list-group bg-trans">
-    <div class="form-group has-feedback">
-        <input type="text" id="demo-oi-definput" placeholder="Search Users" class="form-control">
-        <i class="ti-search form-control-feedback" style="line-height: 30px;"></i>
-    </div>
-    @foreach($here as $authData)
-        <div class="list-group-item">
-            <div class="media-left pos-rel">
-                <img class="img-circle img-xs" src="{{ Vite::asset('resources/img/profile-photos/9.png') }}"
-                    alt="Profile Picture">
-                <i class="badge badge-success badge-stat badge-icon pull-left"></i>
+        <div class="list-group bg-trans">
+            <div class="form-group has-feedback">
+                <input type="text" id="demo-oi-definput" placeholder="Search Users" class="form-control">
+                <i class="ti-search form-control-feedback" style="line-height: 30px;"></i>
             </div>
-            <div class="media-body">
-                <span class="mar-no">{{ $authData['name'] }}</span>
-                <button class="btn btn-info btn-icon pull-right"><i class="demo-psi-speech-bubble-3 icon-lg"></i> </button>
-                <p><a href="#" ><span class="label label-success mar-rgt">Send Request</span></a></p>
+            @foreach ($here as $authData)
+                @php
+                    $friend = \App\Models\User::find($authData['id']);
+                @endphp
+                <div class="list-group-item">
+                    <div class="media-left pos-rel">
+                        <img class="img-circle img-xs" src="{{ Vite::asset('resources/img/profile-photos/9.png') }}"
+                            alt="Profile Picture">
+                        <i class="badge badge-success badge-stat badge-icon pull-left"></i>
+                    </div>
+                    <div class="media-body">
+                        <span class="mar-no">{{ $authData['name'] }}</span>
 
-            </div>
+                        @if (auth()->user()->getFriendship($friend))
+                            <button class="btn btn-info btn-icon pull-right"><i
+                                    class="demo-psi-speech-bubble-3 icon-lg"></i> </button>
+                        @else
+                            <p><a href="/sendfriendrequest/{{ $authData['id'] }}"><span
+                                        class="label label-success mar-rgt">Send Request</span></a></p>
+                        @endif
+                    </div>
+
+                </div>
+            @endforeach
 
         </div>
-    @endforeach
+    @else
+        <div class="py-4 text-gray-600">
+            No User
+        </div>
 
-</div>
-@else
-<div class="py-4 text-gray-600">
-    No User
-</div>
-
-@endif
+    @endif
 </div>

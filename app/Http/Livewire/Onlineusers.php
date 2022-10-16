@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Auth;
 
 class Onlineusers extends Component
 {
@@ -11,13 +12,12 @@ class Onlineusers extends Component
     public function getListeners()
     {
         return [
-           // "echo:orders.{$this->orderId},OrderShipped" => 'notifyNewOrder',
+            // "echo:orders.{$this->orderId},OrderShipped" => 'notifyNewOrder',
             'echo-presence:onlineusers,here' => 'here',
             'echo-presence:onlineusers,joining' => 'joining',
             'echo-presence:onlineusers,leaving' => 'leaving',
         ];
     }
-
 
     public function render()
     {
@@ -29,7 +29,13 @@ class Onlineusers extends Component
      */
     public function here($data)
     {
-        $this->here = $data;
+        foreach ($data as $usr) {
+            if (isset($usr['id'])) {
+                if (Auth::id() != $usr['id']) {
+                    $this->here[$usr['id']] = $usr;
+                }
+            }
+        }
     }
 
     /**
@@ -37,15 +43,11 @@ class Onlineusers extends Component
      */
     public function leaving($data)
     {
-        $here = collect($this->here);
-
-        $firstIndex = $here->search(function ($authData) use ($data) {
-            return $authData['id'] == $data['id'];
-        });
-
-        $here->splice($firstIndex, 1);
-
-        $this->here = $here->toArray();
+        foreach ($data as $usr) {
+            if (isset($usr['id'])) {
+                unset($this->here[$usr['id']]);
+            }
+        }
     }
 
     /**
@@ -53,7 +55,13 @@ class Onlineusers extends Component
      */
     public function joining($data)
     {
-        $this->here[] = $data;
+        foreach ($data as $usr) {
+            if (isset($usr['id'])) {
+                if (Auth::id() != $usr['id']) {
+                    $this->here[$usr['id']] = $usr;
+                }
+            }
+        }
 
         //$this->dispatchBrowserEvent('onlineusers',['success' => 'Your message has been sent successfully!']);
     }

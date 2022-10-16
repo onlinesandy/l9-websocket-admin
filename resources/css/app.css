@@ -2,12 +2,17 @@
 @import './bootstrap.min.css';
 @import './nifty.min.css';
 @import './demo/nifty-demo-icons.min.css';
+@import './demo/sweetalert2.min.css';
 @import './demo/nifty-demo.min.css';
 @import '../plugins/morris-js/morris.min.css';
 @import '../plugins/magic-check/css/magic-check.min.css';
 @import '../plugins/pace/pace.min.css';
 @import '../plugins/themify-icons/themify-icons.min.css';
 @import '../plugins/font-awesome/css/font-awesome.min.css';
+@import '../plugins/animate-css/animate.min.css';
+@import '../plugins/fooTable/css/footable.core.css';
+@import './custom.css';
+
 
 
 

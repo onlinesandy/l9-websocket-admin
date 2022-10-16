@@ -38,7 +38,7 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         <i class="demo-pli-bell"></i>
-                        <span class="badge badge-header badge-danger"></span>
+                        <span id="header_notification_badge" class="badge badge-header badge-danger hide"></span>
                     </a>
 
                     <!--Notification dropdown menu-->
@@ -48,7 +48,7 @@
                         </div>
                         <div class="nano scrollable">
                             <div class="nano-content">
-                                <ul class="head-list">
+                                <ul class="head-list" id="head-list-notification">
 
                                     <!-- Dropdown list-->
                                     <li>
@@ -65,47 +65,7 @@
                                         </a>
                                     </li>
 
-                                    <!-- Dropdown list-->
-                                    <li>
-                                        <a href="#">
-                                            <div class="clearfix">
-                                                <p class="pull-left">Upgrade Progress</p>
-                                                <p class="pull-right">10%</p>
-                                            </div>
-                                            <div class="progress progress-sm">
-                                                <div style="width: 10%;" class="progress-bar progress-bar-warning">
-                                                    <span class="sr-only">10% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
 
-                                    <!-- Dropdown list-->
-                                    <li>
-                                        <a class="media" href="#">
-                                    <span class="badge badge-success pull-right">90%</span>
-                                            <div class="media-left">
-                                                <i class="demo-pli-data-settings icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="text-nowrap">HDD is full</div>
-                                                <small class="text-muted">50 minutes ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-
-                                    <!-- Dropdown list-->
-                                    <li>
-                                        <a class="media" href="#">
-                                            <div class="media-left">
-                                                <i class="demo-pli-file-edit icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="text-nowrap">Write a news article</div>
-                                                <small class="text-muted">Last Update 8 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
 
                                     <!-- Dropdown list-->
                                     <li>
@@ -120,20 +80,6 @@
                                             </div>
                                         </a>
                                     </li>
-
-                                    <!-- Dropdown list-->
-                                    <li>
-                                        <a class="media" href="#">
-                                            <div class="media-left">
-                                                <i class="demo-pli-add-user-plus-star icon-2x"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="text-nowrap">New User Registered</div>
-                                                <small class="text-muted">4 minutes ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-
 
 
                                 </ul>

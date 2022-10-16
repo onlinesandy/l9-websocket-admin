@@ -23,7 +23,7 @@
                 </div>
                 <div class="checkbox pad-btm text-left">
                     <input id="remember_me" type="checkbox" class="magic-checkbox" name="remember">
-                    <label for="demo-form-checkbox">{{ __('Remember me') }}</label>
+                    <label for="remember_me">{{ __('Remember me') }}</label>
                 </div>
                 <x-primary-button class="btn btn-primary btn-lg btn-block">
                     {{ __('Sign in') }}
