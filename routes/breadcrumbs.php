@@ -108,3 +108,14 @@ Breadcrumbs::for('permissions.show', function (BreadcrumbTrail $trail) {
     $trail->parent('permissions.index');
     $trail->push('Show', url('permissions'));
 });
+
+// Home > Role > Dropzone
+Breadcrumbs::for('dropzone', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Dropzone', url('dropzone'));
+});
+// Home > Role > Dropzone
+Breadcrumbs::for('dropzone.store', function (BreadcrumbTrail $trail) {
+    $trail->parent('dropzone');
+    $trail->push('Dropzone', url('dropzone'));
+});

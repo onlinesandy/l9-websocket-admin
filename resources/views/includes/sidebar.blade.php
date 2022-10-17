@@ -158,6 +158,15 @@
                             </a>
                         </li>
 
+                        <li class="{{ request()->is('dropzone*') ? 'active-link' : '' }}">
+                            <a href="{{ url('dropzone') }}">
+                                <i class="fa-solid fa-file-upload"></i>
+                                <span class="menu-title">
+                                    <strong>File Upload</strong>
+                                </span>
+                            </a>
+                        </li>
+
                         <!--Menu list item-->
                         <li class="{{ request()->is('friends*') ? 'active-link active' : '' }}">
                             <a href="#">

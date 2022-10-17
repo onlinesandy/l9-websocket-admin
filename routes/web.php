@@ -23,6 +23,8 @@ use App\Http\Controllers\FriendController;
 use App\Http\Controllers\CommandController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\DropzoneController;
+
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -68,15 +70,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('unfriend/{id}', [FriendController::class, 'unfriend'])->name('unfriend');
     Route::get('blockfriend/{id}', [FriendController::class, 'blockfriend'])->name('unfriend');
 
-    Route::get('/email/verify', 'VerificationController@show')->name('verification.notice');
-    Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')
+    Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
         ->name('verification.verify')
         ->middleware(['signed']);
-    Route::post('/email/resend', 'VerificationController@resend')
+    Route::post('/email/resend', [VerificationController::class, 'resend'])
         ->name('verification.resend')
         ->middleware(['throttle:6,1']);
 
     Route::get('test-mail', [MailController::class, 'sendMail'])->name('send.mail');
+
+    Route::get('dropzone', [DropzoneController::class, 'index'])->name('dropzone');
+    Route::post('dropzone/store', [DropzoneController::class, 'store'])->name('dropzone.store');
+    Route::post('dropzone/delete', [DropzoneController::class, 'fileDestroy'])->name('dropzone.delete');
 });
 
 // Route::livewire('chat', 'chat-room')->middleware('auth')->layout('layouts.auth');

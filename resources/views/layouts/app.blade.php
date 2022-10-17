@@ -60,6 +60,9 @@
     <script src="{{ Vite::asset('resources/js/demo/form-wizard.js') }}"></script>
     <script src="{{ Vite::asset('resources/plugins/fooTable/dist/footable.all.min.js') }}"></script>
 
+    <script src="{{ Vite::asset('resources/plugins/dropzone/dropzone.min.js') }}"></script>
+
+
 
 
 </body>

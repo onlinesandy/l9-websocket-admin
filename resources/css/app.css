@@ -11,6 +11,8 @@
 @import '../plugins/font-awesome/css/font-awesome.min.css';
 @import '../plugins/animate-css/animate.min.css';
 @import '../plugins/fooTable/css/footable.core.css';
+
+@import '../plugins/dropzone/dropzone.min.css';
 @import './custom.css';
 
 
