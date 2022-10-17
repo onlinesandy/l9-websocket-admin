@@ -3,9 +3,6 @@
 
 
 $(document).on("DOMContentLoaded", () => {
-         $(function() {
-            // $('table').footable();
-        });
 
     $("#approve-friend-btn").on("click", function () {
         let sender_id = $(this).attr("sender_id");

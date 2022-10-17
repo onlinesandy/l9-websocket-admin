@@ -146,7 +146,8 @@
             <div>
                 <div class="nano" style="height:300px">
                     <div class="nano-content pad-all" id="chat-body-div">
-                        <ul class="list-unstyled media-block">
+                        <ul
+                            class="list-unstyled media-block @if ($friend_id > 0) chatscreen-{{ $friend_id }} @endif">
                             @php
                                 $prevDate = '';
                                 $unread = false;
@@ -235,20 +236,63 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', function() {
-        console.log("chat page");
+        function scrollBottom(element) {
+            element.scroll({
+                top: element.scrollHeight,
+                behavior: "smooth"
+            });
+        }
+        const formatDate = (dt) => {
+
+            let date = new Date(dt);
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            hours %= 12;
+            hours = hours || 12;
+            minutes = minutes < 10 ? `0${minutes}` : minutes;
+
+            const strTime = `${hours}:${minutes} ${ampm}`;
+
+            return strTime;
+        };
         window.Echo.private(`chat-{{ auth()->id() }}`)
             .listen(`chat-sendmsg`, (e) => {
                 console.log('chat room event fired', e);
             }).notification((res) => {
                 let msg = JSON.parse(res.message);
                 // Livewire.emit('NewMessage', JSON.parse(res.message))
-                $.niftyNoty({
-                    type: 'dark',
-                    title: 'Message from '+ res.from,
-                    message: msg.message,
-                    container: 'floating',
-                    timer: 5000
-                });
+                if (msg.to_id > 0) {
+                    let checkfriendscreen = document.querySelectorAll('.chatscreen-' + msg.from_id);
+                    if (checkfriendscreen !== undefined && checkfriendscreen.length > 0) {
+                        let msg_time = msg.created_at;
+                        let msgHtml =
+                            '<li class="mar-btm"><div class="hide  media-right "><img src="#" class="img-circle img-sm" alt="Profile Picture">';
+                        msgHtml += '</div><div class="media-body pad-hor"><div class="speech">';
+                        msgHtml += '<a href="#" class="media-heading hide">' + msg.from_id + '</a>';
+                        msgHtml += '<p> <strong>' + msg.message + '</strong></p>';
+                        msgHtml += '<p class="speech-time" style="margin-bottom: 0px;">';
+                        msgHtml += '<i class="demo-pli-clock icon-fw"></i>' + formatDate(msg_time) +
+                            '</p></div></div><li>';
+                        console.log(checkfriendscreen.innerHTML);
+                        document.querySelector('.chatscreen-' + msg.from_id).innerHTML += msgHtml;;
+
+                        let scroll_to_bottom = document.getElementById("chat-body-div");
+                        scrollBottom(scroll_to_bottom);
+
+                    } else {
+                        $.niftyNoty({
+                            type: 'dark',
+                            title: 'Message from ' + res.from,
+                            message: msg.message,
+                            container: 'floating',
+                            timer: 5000
+                        });
+                    }
+
+                }
+
             });
 
 
