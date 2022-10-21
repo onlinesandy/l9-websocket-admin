@@ -49,7 +49,7 @@
                         <td>{{ ++$srno }}</td>
                         <td>{{ $role->name }}</td>
                         <td>{{ $role->name }}</td>
-                        <td><i class="ti-time"></i> {{ $role->created_at->format('d-m-Y H:i') }}</td>
+                        <td><i class="ti-time mar-rgt-5"></i> {{ $role->created_at->format('d-m-Y H:i') }}</td>
                         <td>
                             <a class="btn btn-info btn-labeled fa fa-eye" href="{{ route('roles.show', $role->id) }}">Show</a>
                             @can('roles.edit')

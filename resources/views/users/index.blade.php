@@ -63,7 +63,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <i class="ti-time"></i> {{ $user->created_at }}
+                                        <i class="ti-time mar-rgt-5"></i>{{ $user->created_at }}
                                 </td>
                                 <td>
 

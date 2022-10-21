@@ -86,7 +86,7 @@
                                     Not Granted
                                     @endif
                                 </td>
-                                <td><i class="ti-time"></i> {{ $p->created_at->format('d-m-Y H:i') }}</td>
+                                <td><i class="ti-time  mar-rgt-5"></i> {{ $p->created_at->format('d-m-Y H:i') }}</td>
                                 <td>
                                     <a class="btn btn-info btn-labeled fa fa-eye" href="{{ route('permissions.show', $p->id) }}">Show</a>
                                     @can('roles.edit')
