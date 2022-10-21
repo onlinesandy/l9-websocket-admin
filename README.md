@@ -106,6 +106,7 @@ The api can be accessed at [http://localhost:8000/api](http://localhost:8000/api
 - [laravel-breadcrumbs](https://github.com/diglactic/laravel-breadcrumbs) - For Breadcrumbs
 - [Laravel-Acquaintances](https://github.com/multicaret/laravel-acquaintances) - Friendship
 - [Laravel-Userstamps](https://www.larablocks.com/package/wildside/userstamps) - Userstamps
+- [Laravel-Visitor](https://github.com/shetabit/visitor) - Route Visitors
 
 
 ## Environment variables

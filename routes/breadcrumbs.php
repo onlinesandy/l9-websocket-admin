@@ -81,8 +81,6 @@ Breadcrumbs::for('commands.index', function (BreadcrumbTrail $trail) {
 });
 
 
-
-
 // Home > Role
 Breadcrumbs::for('permissions.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');

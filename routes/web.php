@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('profile', ProfileController::class);
 
-    Route::resource('chat', ChatController::class);
+    Route::resource('chat', ChatController::class)->middleware(['visitors']);
 
     Route::resource('friends', FriendController::class);
     Route::get('sendfriendrequest/{id}', [FriendController::class, 'sendfriendrequest'])->name('friends.sendfriendrequest');

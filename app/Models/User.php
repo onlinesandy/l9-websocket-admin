@@ -15,12 +15,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Shetabit\Visitor\Traits\Visitor;
 
 
 
 class User extends Authenticatable
 {
-    use LockableTrait, HasApiTokens, HasFactory, Notifiable, HasRoles, Friendable, Userstamps, SoftDeletes;
+    use LockableTrait, HasApiTokens, HasFactory, Notifiable, HasRoles, Friendable, Userstamps, SoftDeletes,Visitor;
 
     /**
      * The attributes that are mass assignable.

@@ -27,7 +27,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+
         $users = User::latest();
+        dd(User::online()->get());
 
         if ($request->get('status') == 'archived') {
             $users = $users->onlyTrashed();

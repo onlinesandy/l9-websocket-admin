@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Auth;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
+use Shetabit\Visitor\Traits\Visitable;
 
 class ChatRoom extends Model
 {
-    use HasFactory;
+    use HasFactory,Visitable;
     protected $fillable = ['from_id', 'to_id', 'read_status', 'status'];
 
     static function check_chat_room($user_id){
