@@ -24,7 +24,7 @@ use App\Http\Controllers\CommandController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\DropzoneController;
-
+use App\Http\Controllers\VerificationController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -49,8 +49,8 @@ Route::post('/lockscreen', [LockScreenController::class, 'unlockscreen'])->name(
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
-    Route::get('file-export-excel', [RoleController::class, 'fileExportExcel'])->name('file-export-excel');
-    Route::get('file-export-csv', [RoleController::class, 'fileExportCsv'])->name('file-export-csv');
+    Route::get('file-export-excel', [RoleController::class, 'fileExportExcel'])->name('roles.file-export-excel');
+    Route::get('file-export-csv', [RoleController::class, 'fileExportCsv'])->name('roles.file-export-csv');
 
     Route::resource('permissions', PermissionController::class);
 
@@ -65,10 +65,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('chat', ChatController::class);
 
     Route::resource('friends', FriendController::class);
-    Route::get('sendfriendrequest/{id}', [FriendController::class, 'sendfriendrequest'])->name('sendfriendrequest');
-    Route::get('acceptfriendrequest/{id}', [FriendController::class, 'acceptfriendrequest'])->name('acceptfriendrequest');
-    Route::get('unfriend/{id}', [FriendController::class, 'unfriend'])->name('unfriend');
-    Route::get('blockfriend/{id}', [FriendController::class, 'blockfriend'])->name('unfriend');
+    Route::get('sendfriendrequest/{id}', [FriendController::class, 'sendfriendrequest'])->name('friends.sendfriendrequest');
+    Route::get('acceptfriendrequest/{id}', [FriendController::class, 'acceptfriendrequest'])->name('friends.acceptfriendrequest');
+    Route::get('unfriend/{id}', [FriendController::class, 'unfriend'])->name('friends.unfriend');
+    Route::get('blockfriend/{id}', [FriendController::class, 'blockfriend'])->name('friends.blockfriend');
 
     Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])

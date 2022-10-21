@@ -21,7 +21,7 @@
             <div class="pad-btm form-inline">
                 <div class="row">
                     <div class="col-sm-6 table-toolbar-left">
-                        @can('role-create')
+                        @can('roles.create')
                             <div class="input-group pad-all">
                                 {!! Form::open(['route' => 'permissions.store', 'method' => 'POST']) !!}
                                 {!! Form::text('name', null, ['placeholder' => 'Create New Permission', 'class' => 'form-control add-per-height']) !!}
@@ -42,7 +42,7 @@
                                 class="form-control" autocomplete="off">
                         </div>
                         <div class="btn-group">
-                            <a class="btn btn-default" href="{{ route('file-export-excel') }}"><i
+                            <a class="btn btn-default" href="{{ route('roles.file-export-excel') }}"><i
                                     class="fa fa-file-excel-o"></i></a>
                             <div class="btn-group">
                                 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
@@ -51,8 +51,8 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{ route('file-export-excel') }}">Download as Excel</a></li>
-                                    <li><a href="{{ route('file-export-csv') }}">Download as CSv</a></li>
+                                    <li><a href="{{ route('roles.file-export-excel') }}">Download as Excel</a></li>
+                                    <li><a href="{{ route('roles.file-export-csv') }}">Download as CSv</a></li>
 
                                 </ul>
                             </div>
@@ -86,13 +86,13 @@
                                     Not Granted
                                     @endif
                                 </td>
-                                <td><i class="ti-time"></i> {{ $p->created_at->format('d-m-Y') }}</td>
+                                <td><i class="ti-time"></i> {{ $p->created_at->format('d-m-Y H:i') }}</td>
                                 <td>
                                     <a class="btn btn-info btn-labeled fa fa-eye" href="{{ route('permissions.show', $p->id) }}">Show</a>
-                                    @can('role-edit')
+                                    @can('roles.edit')
                                     <a class="btn btn-warning btn-labeled fa fa-edit" href="{{ route('permissions.edit', $p->id) }}">Edit</a>
                                     @endcan
-                                    @can('role-delete')
+                                    @can('roles.delete')
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $p->id], 'style' => 'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-labeled fa fa-trash-o">
                                             Delete

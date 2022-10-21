@@ -45,6 +45,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Roles</th>
+                            <th>Created At</th>
                             <th width="300px">Action</th>
                         </tr>
                     </thead>
@@ -60,6 +61,9 @@
                                             <label class="badge badge-success">{{ $v }}</label>
                                         @endforeach
                                     @endif
+                                </td>
+                                <td>
+                                    <i class="ti-time"></i> {{ $user->created_at }}
                                 </td>
                                 <td>
 

@@ -90,6 +90,7 @@
                                 </span>
                             </a>
                         </li>
+                        @can('permissions.list')
                         <li class="{{ request()->is('permissions*') ? 'active-link' : '' }}">
                             <a href="{{ url('permissions') }}">
                                 <i class="fa-solid fa-person-circle-exclamation"></i>
@@ -98,8 +99,8 @@
                                 </span>
                             </a>
                         </li>
-
-                        @can('role-list')
+                        @endcan
+                        @can('roles.list')
                             <li class="{{ request()->is('roles*') ? 'active-link' : '' }}">
                                 <a href="{{ url('roles') }}">
                                     <i class="fa-solid fa-person-circle-exclamation"></i>
@@ -109,6 +110,7 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('users.list')
                         <li class="{{ request()->is('users*') ? 'active-link' : '' }}">
                             <a href="{{ url('users') }}">
                                 <i class="fa-solid fa-users-gear"></i>
@@ -117,6 +119,7 @@
                                 </span>
                             </a>
                         </li>
+                        @endcan
                         @can('chat')
                             <li class="{{ request()->is('chat*') ? 'active-link' : '' }}">
                                 <a href="{{ url('chat') }}">

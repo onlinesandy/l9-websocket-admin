@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Carbon\Carbon;
 
 class ChatRoom extends Model
 {
@@ -28,6 +30,12 @@ class ChatRoom extends Model
 
     public function messages(){
         return $this->hasMany(Message::class);
+    }
+
+    protected function createdAt(): Attribute {
+        return new Attribute(
+            get: fn ($value) =>  Carbon::parse($value)->format('Y-m-d H:i'),
+        );
     }
 
 }

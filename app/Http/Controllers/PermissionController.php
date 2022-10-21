@@ -13,21 +13,17 @@ use Illuminate\Support\Facades\Artisan;
 
 class PermissionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     function __construct()
     {
-        //  $this->middleware('permission:permission-list|permission-create|permission-edit|permission-delete', ['only' => ['index','store']]);
-        //  $this->middleware('permission:permission-create', ['only' => ['create','store']]);
-        //  $this->middleware('permission:permission-edit', ['only' => ['edit','update']]);
-        //  $this->middleware('permission:permission-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:permissions.list|permissions.create|permissions.edit|permissions.delete', ['only' => ['index','store']]);
+         $this->middleware('permission:permissions.create', ['only' => ['create','store']]);
+         $this->middleware('permission:permissions.edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:permissions.delete', ['only' => ['destroy']]);
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource    .
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +31,7 @@ class PermissionController extends Controller
     {
         $list_per_page = 10;
         $permissions = Permission::orderBy('id','DESC')->paginate($list_per_page);
-        return view('permissions.index',['permissions'=>$permissions,'title'=>'Role Listing'])
+        return view('permissions.index',['permissions'=>$permissions,'title'=>'Permissions Listing'])
             ->with('i', ($request->input('page', 1) - 1) * $list_per_page);
     }
 

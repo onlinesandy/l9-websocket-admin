@@ -12,6 +12,11 @@ use Spatie\Permission\Traits\HasRoles;
 use Multicaret\Acquaintances\Traits\Friendable;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+
+
 
 class User extends Authenticatable
 {
@@ -50,6 +55,27 @@ class User extends Authenticatable
     {
         return ['App.User.' . $this->id, 'chat-' . $this->id];
     }
+
+    protected function name(): Attribute {
+        return new Attribute(
+            get: fn ($value) =>  ucfirst($value),
+            set: fn ($value) =>  ucfirst($value),
+        );
+    }
+
+    protected function email(): Attribute {
+        return new Attribute(
+            get: fn ($value) => Str::mask($value, '*', 2, -3)
+        );
+    }
+
+    protected function createdAt(): Attribute {
+        return new Attribute(
+            get: fn ($value) =>  Carbon::parse($value)->format('Y-m-d H:i'),
+        );
+    }
+
+
 
 
 }

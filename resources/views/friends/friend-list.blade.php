@@ -4,24 +4,33 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Avatar</th>
                     <th>Name</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($getFriends as $f)
-                @php
-                   $checkFriendStatus =  auth()->user()->getFriendship($f);
-                @endphp
+                @foreach ($users as $u)
+                    @php
+                        $checkFriendStatus = auth()
+                            ->user()
+                            ->getFriendship($u);
+                    @endphp
                     <tr>
-                        <td><a href="#" class="btn-link">
-                                {{ $f->name }}</a></td>
+                        <td>
+                            <a href="#" class="btn-link">
+                                <img src="{{ Vite::asset('resources/img/profile-photos/1.png') }}"
+                                    class="img-circle img-sm" alt="{{ $u->name }}">
+                            </a>
+                        </td>
+
+                        <td><a href="#" class="btn-link">{{ $u->name }}</a></td>
 
                         <td>
-                            @if($checkFriendStatus->status == 'accepted')
-                            <a id="unfriend-btn"  href="javascript:void(0);" sender_id="{{$f->id}}">
-                                <div class="label label-table label-warning" >Unfriend</div>
-                            </a>
+                            @if (isset($checkFriendStatus->status) && $checkFriendStatus->status == 'accepted')
+                                <a id="unfriend-btn" href="javascript:void(0);" sender_id="{{ $u->id }}">
+                                    <div class="label label-table label-warning">Unfriend</div>
+                                </a>
                             @endif
 
 

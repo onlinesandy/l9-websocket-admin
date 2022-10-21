@@ -3,7 +3,7 @@
         <div class="panel">
             <div class="tab-pane fade in active" id="demo-asd-tab-1">
                 <p class="pad-hor mar-top text-semibold text-main">
-                    Friends
+                    Users
                 </p>
                 <hr />
 
@@ -67,8 +67,14 @@
                             </div>
                         </div>
                     @empty
-                        <div class="py-4 text-gray-600">
-                            No Friends Yet
+                        <div class="list-group bg-trans pad-btm">
+                            <div class="list-group-item" href="#">
+                                <i class="demo-pli-information icon-lg icon-fw"></i>
+                                No Friends Yet
+                                <a href="{{ url('friends') }}">
+                                    <span class="label label-info pull-right">Add Friend</span>
+                                </a>
+                            </div>
                         </div>
                     @endforelse
                 </div>

@@ -41,9 +41,15 @@
 
         </div>
     @else
-        <div class="py-4 text-gray-600">
-            No User
+    <div class="list-group bg-trans pad-btm">
+        <div class="list-group-item" href="#">
+            <i class="demo-pli-information icon-lg icon-fw"></i>
+            No User Online Yet
+            <a href="{{ url('friends') }}">
+                <span class="label label-info pull-right">Search Friend</span>
+            </a>
         </div>
+    </div>
 
     @endif
 </div>

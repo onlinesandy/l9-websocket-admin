@@ -93,8 +93,14 @@ class FriendController extends Controller
         $getFriends = auth()
             ->user()
             ->getFriends();
-        // dd($getFriends);
+        //  dd($getFriends);
 
-        return view('friends.index', ['getFriendRequests' => $getFriendRequests, 'getFriends' => $getFriends, 'title' => 'Friend List']);
+        $users = User::all()->except(Auth::id());
+
+        return view('friends.index', [
+            'getFriendRequests' => $getFriendRequests,
+            'getFriends' => $getFriends,
+            'users'=>$users,
+            'title' => 'Friend List']);
     }
 }
