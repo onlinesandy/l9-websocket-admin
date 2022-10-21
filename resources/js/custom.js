@@ -4,7 +4,9 @@
 
 $(document).on("DOMContentLoaded", () => {
 
-    $("#user-role-selects").select2();
+    $("#user-role-selects").select2({
+        placeholder: "Please Select Role",
+    });
 
     $("#approve-friend-btn").on("click", function () {
         let sender_id = $(this).attr("sender_id");

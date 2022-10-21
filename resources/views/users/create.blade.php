@@ -1,66 +1,71 @@
 <x-app-layout>
     @include('includes.page-title')
-
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Create New User</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
-
-
     @if (count($errors) > 0)
-      <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-           @foreach ($errors->all() as $error)
-             <li>{{ $error }}</li>
-           @endforeach
-        </ul>
-      </div>
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
+    <div class="col-sm-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ $title }}
+                    <span class="pull-right">
+                        <a class="btn btn-primary" href="{{ route('users.index') }}">
+                            Back
+
+                        </a>
+                        <a href="#" class="add-tooltip demo-pli-question-circle icon-lg unselectable" data-html="true"
+                            data-title="<h4>Information</h4><p style='width:150px'>Password should be <br/> min 8 and max 20 character.</p>"
+                            data-original-title="" title=""></a>
+                    </span>
+
+                </h3>
+            </div>
 
 
-    {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            <!--Block Styled Form -->
+            <!--===================================================-->
+            {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+            <div class="panel-body">
+                <div class="form-group has-feedback">
+                    {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+                    <i class="fa fa-user icon-lg form-control-feedback"></i>
+                </div>
+
+                <div class="form-group has-feedback">
+                    {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
+                    <i class="fa fa-envelope icon-lg form-control-feedback"></i>
+                </div>
+
+                <div class="form-group has-feedback">
+                    {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
+                    <i class="fa fa-key icon-lg form-control-feedback"></i>
+                </div>
+
+                <div class="form-group has-feedback">
+                    {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
+                    <i class="fa fa-key icon-lg form-control-feedback"></i>
+                </div>
+
+                <div class="form-group has-feedback">
+                    {!! Form::select('roles[]', $roles, [], ['class' => 'form-control', 'multiple', 'id' => 'user-role-selects']) !!}
+                </div>
+
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+            <div class="panel-footer text-right">
+                <button class="btn btn-success" type="submit">Submit</button>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Password:</strong>
-                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Confirm Password:</strong>
-                {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Role:</strong>
-                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple','id'=>'user-role-selects')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            {!! Form::close() !!}
+            <!--===================================================-->
+            <!--End Block Styled Form -->
+
         </div>
     </div>
-    {!! Form::close() !!}
+
 </x-app-layout>
