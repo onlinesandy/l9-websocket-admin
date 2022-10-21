@@ -4,14 +4,10 @@
         <div class="row">
             <div class="col-sm-6 table-toolbar-left">
                 @can('role-create')
-                    <a class="btn btn-purple" href="{{ route('roles.create') }}">
-                        <i class="demo-pli-add"></i> Create New Role
+                    <a class="btn btn-success btn-labeled demo-pli-add" href="{{ route('roles.create') }}">
+                        Create New Role
                     </a>
                 @endcan
-                <div class="btn-group">
-                    <button class="btn btn-default"><i class="demo-pli-exclamation-circle"></i></button>
-                    <button class="btn btn-default"><i class="demo-pli-recycling"></i></button>
-                </div>
             </div>
             <div class="col-sm-6 table-toolbar-right">
                 <div class="form-group">
@@ -44,7 +40,7 @@
                     <th>Role</th>
                     <th>Assigned Permissions</th>
                     <th>Created At</th>
-                    <th>Action</th>
+                    <th width="300px">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,18 +49,16 @@
                         <td>{{ ++$srno }}</td>
                         <td>{{ $role->name }}</td>
                         <td>{{ $role->name }}</td>
-                        <td><i class="demo-pli-clock"></i> {{ $role->created_at->format('d-m-Y') }}</td>
+                        <td><i class="ti-time"></i> {{ $role->created_at->format('d-m-Y') }}</td>
                         <td>
-                            <a class="btn btn-info" href="{{ route('roles.show', $role->id) }}">Show</a>
+                            <a class="btn btn-info btn-labeled fa fa-eye" href="{{ route('roles.show', $role->id) }}">Show</a>
                             @can('role-edit')
-                                <a class="btn btn-primary" href="{{ route('roles.edit', $role->id) }}"><i
-                                        class="fa fa-edit">
-                                        Edit</i></a>
+                            <a class="btn btn-warning btn-labeled fa fa-edit" href="{{ route('roles.edit', $role->id) }}">Edit</a>
                             @endcan
                             @can('role-delete')
                                 {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' => 'display:inline']) !!}
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-trash-o"></i> Delete
+                                <button type="submit" class="btn btn-danger btn-labeled fa fa-trash-o">
+                                    Delete
                                 </button>
                                 {!! Form::close() !!}
                             @endcan

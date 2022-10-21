@@ -13,6 +13,7 @@
 @import '../plugins/fooTable/css/footable.core.css';
 
 @import '../plugins/dropzone/dropzone.min.css';
+@import '../plugins/select2/css/select2.min.css';
 @import './custom.css';
 
 

@@ -119,3 +119,30 @@ Breadcrumbs::for('dropzone.store', function (BreadcrumbTrail $trail) {
     $trail->parent('dropzone');
     $trail->push('Dropzone', url('dropzone'));
 });
+
+
+// Home > User > Dropzone
+Breadcrumbs::for('users.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Users', url('users'));
+});
+
+Breadcrumbs::for('users.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('users.index');
+    $trail->push('Users', url('users'));
+});
+Breadcrumbs::for('users.show', function (BreadcrumbTrail $trail) {
+    $trail->parent('users.index');
+    $trail->push('Users', url('users'));
+});
+
+Breadcrumbs::for('users.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('users.index');
+    $trail->push('Users', url('users'));
+});
+
+Breadcrumbs::for('users.delete', function (BreadcrumbTrail $trail) {
+    $trail->parent('users.index');
+    $trail->push('Users', url('users'));
+});
+

@@ -61,6 +61,7 @@
     <script src="{{ Vite::asset('resources/plugins/fooTable/dist/footable.all.min.js') }}"></script>
 
     <script src="{{ Vite::asset('resources/plugins/dropzone/dropzone.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/plugins/select2/js/select2.min.js') }}"></script>
 
 
 

@@ -19,9 +19,14 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',['data'=>$data,'title'=>'Users'])
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $users = User::latest();
+
+        if ($request->get('status') == 'archived') {
+            $users = $users->onlyTrashed();
+        }
+
+        $users = $users->paginate(10);
+        return view('users.index', ['data' => $users, 'title' => 'Users']);
     }
 
     /**
@@ -31,8 +36,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
-        return view('users.create',['roles'=>$roles,'title'=>'Create User'] );
+        $roles = Role::pluck('name', 'name')->all();
+        return view('users.create', ['roles' => $roles, 'title' => 'Create User']);
     }
 
     /**
@@ -47,7 +52,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
         ]);
 
         $input = $request->all();
@@ -56,8 +61,9 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User created successfully');
     }
 
     /**
@@ -69,7 +75,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',['user'=>$user,'title'=>'Show User']);
+        return view('users.show', ['user' => $user, 'title' => 'Show User']);
     }
 
     /**
@@ -81,10 +87,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('users.edit',['user'=>$user,'roles'=>$roles,'userRole'=>$userRole,'title'=>'Show User']);
+        return view('users.edit', ['user' => $user, 'roles' => $roles, 'userRole' => $userRole, 'title' => 'Show User']);
     }
 
     /**
@@ -98,26 +104,29 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
         ]);
 
         $input = $request->all();
-        if(!empty($input['password'])){
+        if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));
+        } else {
+            $input = Arr::except($input, ['password']);
         }
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        DB::table('model_has_roles')
+            ->where('model_id', $id)
+            ->delete();
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User updated successfully');
     }
 
     /**
@@ -129,7 +138,30 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User deleted successfully');
+    }
+
+    public function restore($id)
+    {
+        User::where('id', $id)
+            ->withTrashed()
+            ->restore();
+
+        return redirect()
+            ->route('users.index', ['status' => 'archived'])
+            ->withSuccess(__('User restored successfully.'));
+    }
+
+    public function forceDelete($id)
+    {
+        User::where('id', $id)
+            ->withTrashed()
+            ->forceDelete();
+
+        return redirect()
+            ->route('users.index', ['status' => 'archived'])
+            ->withSuccess(__('User force deleted successfully.'));
     }
 }

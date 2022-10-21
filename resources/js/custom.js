@@ -4,6 +4,8 @@
 
 $(document).on("DOMContentLoaded", () => {
 
+    $("#user-role-selects").select2();
+
     $("#approve-friend-btn").on("click", function () {
         let sender_id = $(this).attr("sender_id");
         //let acceptfriendrequesturl = '{{ url("acceptfriendrequest/'+sender_id+'") !!}';

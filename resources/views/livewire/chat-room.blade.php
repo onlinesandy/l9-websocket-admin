@@ -196,8 +196,7 @@
                                             <a href="#" class="media-heading hide">{{ $m->from_id }}</a>
                                             <p> <strong>{{ $m->message }}</strong></p>
                                             <p class="speech-time" style="margin-bottom: 0px;">
-                                                <i
-                                                    class="demo-pli-clock icon-fw"></i>{{ $m->created_at->format('h:i A') }}
+                                                <i class="ti-time icon-fw"></i>{{ $m->created_at->format('h:i A') }}
                                                 @if ($m->read_status != 0 && $m->from_id == Auth::id())
                                                     <i class="fa fa-check"></i>
                                                 @endif
@@ -273,7 +272,7 @@
                         msgHtml += '<a href="#" class="media-heading hide">' + msg.from_id + '</a>';
                         msgHtml += '<p> <strong>' + msg.message + '</strong></p>';
                         msgHtml += '<p class="speech-time" style="margin-bottom: 0px;">';
-                        msgHtml += '<i class="demo-pli-clock icon-fw"></i>' + formatDate(msg_time) +
+                        msgHtml += '<i class="ti-time icon-fw"></i>' + formatDate(msg_time) +
                             '</p></div></div><li>';
                         console.log(checkfriendscreen.innerHTML);
                         document.querySelector('.chatscreen-' + msg.from_id).innerHTML += msgHtml;;

@@ -68,7 +68,7 @@
                             <th>Permission Name</th>
                             <th>Status</th>
                             <th>Created at</th>
-                            <th>Action</th>
+                            <th width="300px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,18 +86,16 @@
                                     Not Granted
                                     @endif
                                 </td>
-                                <td><i class="demo-pli-clock"></i> {{ $p->created_at->format('d-m-Y') }}</td>
+                                <td><i class="ti-time"></i> {{ $p->created_at->format('d-m-Y') }}</td>
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('permissions.show', $p->id) }}">Show</a>
+                                    <a class="btn btn-info btn-labeled fa fa-eye" href="{{ route('permissions.show', $p->id) }}">Show</a>
                                     @can('role-edit')
-                                        <a class="btn btn-primary" href="{{ route('permissions.edit', $p->id) }}"><i
-                                                class="fa fa-edit">
-                                                Edit</i></a>
+                                    <a class="btn btn-warning btn-labeled fa fa-edit" href="{{ route('permissions.edit', $p->id) }}">Edit</a>
                                     @endcan
                                     @can('role-delete')
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $p->id], 'style' => 'display:inline']) !!}
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="fa fa-trash-o"></i> Delete
+                                        <button type="submit" class="btn btn-danger btn-labeled fa fa-trash-o">
+                                            Delete
                                         </button>
                                         {!! Form::close() !!}
                                     @endcan

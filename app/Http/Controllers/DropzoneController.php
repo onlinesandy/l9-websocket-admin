@@ -14,6 +14,11 @@ class DropzoneController extends Controller
      */
     public function index()
     {
+        $macAddr = exec('getmac');
+        $ipAddr=\Request::ip();
+
+
+        dd($macAddr,$ipAddr);
         return view('dropzone.index',['title'=>'File Upload']);
     }
 

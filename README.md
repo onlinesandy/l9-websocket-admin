@@ -105,6 +105,7 @@ The api can be accessed at [http://localhost:8000/api](http://localhost:8000/api
 - [laravel-role-permission](https://spatie.be/docs/laravel-permission/v5/installation-laravel) - For Role and Permission
 - [laravel-breadcrumbs](https://github.com/diglactic/laravel-breadcrumbs) - For Breadcrumbs
 - [Laravel-Acquaintances](https://github.com/multicaret/laravel-acquaintances) - Friendship
+- [Laravel-Userstamps](https://www.larablocks.com/package/wildside/userstamps) - Userstamps
 
 
 ## Environment variables
