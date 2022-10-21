@@ -21,14 +21,21 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Permissions:</strong>
+            <p>Permissions:</p>
                 @if(!empty($rolePermissions))
                     @foreach($rolePermissions as $v)
-                        <label class="label label-success">{{ $v->name }},</label>
+                    <div class="permission-box-panel">
+                        <div class="panel panel-purple panel-colorful">
+                            <div class="pad-all text-center">
+                                <span class="text-2x text-thin">1</span>
+                                <p>{{ $v->name }}</p>
+                                <i class="demo-pli-shopping-bag icon-lg"></i>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 @endif
-            </div>
+
         </div>
     </div>
 </x-app-layout>

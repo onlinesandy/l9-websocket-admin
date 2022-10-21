@@ -1,5 +1,15 @@
 <x-app-layout>
     @include('includes.page-title')
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
     <div class="panel">
         <div class="panel-heading">
@@ -12,9 +22,14 @@
                 <div class="row">
                     <div class="col-sm-6 table-toolbar-left">
                         @can('role-create')
-                            <a class="btn btn-purple" href="{{ route('permissions.create') }}">
-                                <i class="demo-pli-add"></i> Create New Permission
-                            </a>
+                            <div class="input-group pad-all">
+                                {!! Form::open(['route' => 'permissions.store', 'method' => 'POST']) !!}
+                                {!! Form::text('name', null, ['placeholder' => 'Create New Permission', 'class' => 'form-control add-per-height']) !!}
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-success"><i class="demo-pli-add"></i></button>
+                                </span>
+                                {!! Form::close() !!}
+                            </div>
                         @endcan
                         <div class="btn-group">
                             <button class="btn btn-default"><i class="demo-pli-exclamation-circle"></i></button>
@@ -27,9 +42,11 @@
                                 class="form-control" autocomplete="off">
                         </div>
                         <div class="btn-group">
-                            <a class="btn btn-default" href="{{ route('file-export-excel') }}"><i class="fa fa-file-excel-o"></i></a>
+                            <a class="btn btn-default" href="{{ route('file-export-excel') }}"><i
+                                    class="fa fa-file-excel-o"></i></a>
                             <div class="btn-group">
-                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" aria-expanded="false">
+                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
+                                    aria-expanded="false">
                                     <i class="demo-pli-download-from-cloud"></i>
                                     <span class="caret"></span>
                                 </button>
@@ -56,13 +73,19 @@
                     </thead>
                     <tbody>
                         @php
-                        $srno = $i;;
+                            $srno = $i;
                         @endphp
                         @foreach ($permissions as $key => $p)
                             <tr>
                                 <td>{{ ++$srno }}</td>
                                 <td>{{ $p->name }}</td>
-                                <td> @if(auth()->user()->can($p->name)) hhhhhh @endif </td>
+                                <td>
+                                    @if (auth()->user()->can($p->name))
+                                        Permission Granted to me
+                                    @else
+                                    Not Granted
+                                    @endif
+                                </td>
                                 <td><i class="demo-pli-clock"></i> {{ $p->created_at->format('d-m-Y') }}</td>
                                 <td>
                                     <a class="btn btn-info" href="{{ route('permissions.show', $p->id) }}">Show</a>

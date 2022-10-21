@@ -55,3 +55,26 @@ div.list-group-item:hover {
     position: relative;
     top: 50%;
 }
+
+.permission-box-panel {
+    width: 170px;
+    height: 135px;
+    margin: 10px 10px;
+    transition: 200ms linear;
+    float: left;
+    position: relative;
+  }
+
+  .permission-box-panel:hover {
+    transform: scale(1.1);
+  }
+
+  .add-per-height{
+    height: 33px;
+  }
+
+  .p_checkbox {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
